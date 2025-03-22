@@ -51,5 +51,5 @@ class GyverTwinkUDP:
     def get_settings(self) -> GyverTwinkSettings:
         """Получить текущие настройки"""
         self.socket.sendto(bytearray([71, 84, 1]), (self.ip, self.port))
-        message, _ = self.socket.recvfrom(1024)
+        message = self.socket.recv(12)
         return GyverTwinkSettings.from_udp(list(message))
