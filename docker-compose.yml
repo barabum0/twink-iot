@@ -7,6 +7,9 @@ services:
     expose:
       - 8083
 
+    environment:
+      GYVERTWINK__IP: 192.168.1.36
+
   frpc:
     image: snowdreamtech/frpc:0.60
     restart: unless-stopped
