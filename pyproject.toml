@@ -5,7 +5,9 @@ description = "Add your description here"
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "bottle>=0.13.2",
+]
 
 [project.scripts]
 app = "twink-iot.main:main"
