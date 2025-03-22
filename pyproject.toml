@@ -10,7 +10,7 @@ dependencies = [
 ]
 
 [project.scripts]
-app = "twink-iot.main:main"
+app = "twink_iot.main:main"
 
 [tool.uv]
 package = true
