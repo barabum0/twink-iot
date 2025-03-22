@@ -11,7 +11,7 @@ services:
       GYVERTWINK__IP: 192.168.1.36
 
   frpc:
-    image: snowdreamtech/frpc:0.60
+    image: snowdreamtech/frpc:0.60-alpine
     restart: unless-stopped
 
     volumes:
