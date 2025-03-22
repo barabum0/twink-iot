@@ -1,6 +1,15 @@
 version: '2'
 
 services:
-  python-app:
+  twink-server:
     image: ghcr.io/barabum0/twink-iot:latest
     restart: unless-stopped
+    expose:
+      - 8083
+
+  frpc:
+    image: snowdreamtech/frpc:0.60
+    restart: unless-stopped
+
+    volumes:
+      - "./frpc.toml:/etc/frp/frpc.toml"

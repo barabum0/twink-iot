@@ -1,0 +1,11 @@
+serverAddr = "<server address>"
+serverPort = 7000
+
+auth.token = "<your token>"
+
+[[proxies]]
+name = "twink-server"
+type = "tcp"
+localIP = "twink-server"
+localPort = 8083
+remotePort = 5958
