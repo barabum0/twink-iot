@@ -1,12 +1,32 @@
 FROM --platform=linux/arm/v7 python:3.13-alpine AS python
+RUN echo "Building for linux/arm/v7"
+
 FROM --platform=linux/arm/v5 python:3.13-alpine AS python
+RUN echo "Building for linux/arm/v5"
+
 FROM --platform=linux/arm64/v8 python:3.13-alpine AS python
+RUN echo "Building for linux/arm64/v8"
+
 FROM --platform=linux/amd64 python:3.13-alpine AS python
+RUN echo "Building for linux/amd64"
+
 FROM --platform=linux/386 python:3.13-alpine AS python
+RUN echo "Building for linux/386"
+
 FROM --platform=linux/arm/v6 arm32v6/python:3.13-alpine AS python
+RUN echo "Building for linux/arm/v6"
 
 FROM python AS builder
-COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+RUN apk --no-cache add curl
+
+# Download the latest installer
+ADD https://astral.sh/uv/install.sh /uv-installer.sh
+
+# Run the installer then remove it
+RUN sh /uv-installer.sh && rm /uv-installer.sh
+
+# Ensure the installed binary is on the `PATH`
+ENV PATH="/root/.local/bin/:$PATH"
 
 ENV UV_COMPILE_BYTECODE=1 UV_LINK_MODE=copy
 
