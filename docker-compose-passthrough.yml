@@ -1,0 +1,8 @@
+version: '2'
+
+services:
+  twink-server:
+    image: ghcr.io/barabum0/twink-iot:latest
+    restart: unless-stopped
+    ports:
+      - "8083:8083"
